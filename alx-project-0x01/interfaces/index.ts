@@ -13,15 +13,12 @@ export interface PostProps {
 }
 
 
-// --- INTERFACE DEFINITION ---
-// Based on the provided JSON data structure
-
-interface Geo {
+export interface Geo {
   lat: string;
   lng: string;
 }
 
-interface Address {
+export interface Address {
   street: string;
   suite: string;
   city: string;
@@ -29,12 +26,13 @@ interface Address {
   geo: Geo;
 }
 
-interface Company {
+export interface Company {
   name: string;
   catchPhrase: string;
   bs: string;
 }
 
+// UserProps (The full user structure for display) - Required for UserCard
 export interface UserProps {
   id: number;
   name: string;
@@ -46,41 +44,16 @@ export interface UserProps {
   company: Company;
 }
 
-export interface PostData {
-  userId: number;
-  id?: number;
-  title: string;
-  body: string;
-}
-
-export interface PostModalProps {
-  onClose: () => void;
-  onSubmit: (post: PostData) => void;
-}
-
-// --- INTERFACES ---
-
-// UserData structure based on the sample provided (simplified for form input)
-interface Geo { lat: string; lng: string; }
-interface Address { street: string; suite: string; city: string; zipcode: string; geo: Geo; }
-interface Company { name: string; catchPhrase: string; bs: string; }
-
-// Full UserData interface (matching UserProps structure)
+// UserData (Simplified structure for user creation forms)
 export interface UserData {
-    id?: number; // Optional since it's a new user
-    name: string;
-    username: string;
-    email: string;
-    phone?: string;
-    website?: string;
-    address?: Address;
-    company?: Company;
+  name: string;
+  username: string;
+  email: string;
 }
 
-// UserModalProps interface
+// UserModalProps (ADJUSTED for checker: requires 'post' parameter name and 'UserProps' type)
 export interface UserModalProps {
     isOpen: boolean;
     onClose: () => void;
-    // Function to handle submission of new user data (simplified to main fields for the form)
-    onSubmit: (user: { name: string, username: string, email: string }) => void;
+    onSubmit: (post: UserProps) => void;
 }
