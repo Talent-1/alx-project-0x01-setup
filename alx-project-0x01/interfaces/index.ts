@@ -9,4 +9,5 @@ export interface PostCardProps {
     title: string;
     body: string;
     author: string;
+    userId: number;
 }
